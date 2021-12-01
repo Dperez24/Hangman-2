@@ -1,0 +1,31 @@
+[[package]]
+name = "antiorm"
+version = "1.2.1"
+description = "A Pythonic Helper for DBAPI-2.0 SQL Access"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "db"
+version = "0.1.1"
+description = "Databases for Humans"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+antiorm = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "a75db5ac7148345643762cb4c1eacf37291fe00d80cb0273c15cdecb3a2c5aa7"
+
+[metadata.files]
+antiorm = [
+    {file = "antiorm-1.2.1.tar.gz", hash = "sha256:96eb1841ce5163db4cf1dc13f4499ec2d7cffc190cf724b78ffdd3e6b7c4ff93"},
+]
+db = [
+    {file = "db-0.1.1.tar.gz", hash = "sha256:980e772f15c1161d3b287ffec4f144e40961b0b3e6d5102809577870bf6c5808"},
+]
