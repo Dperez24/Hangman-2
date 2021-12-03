@@ -23,7 +23,7 @@ def choose_word():
     print(computer_sports_choice)
   if category == "Foods" or category == "foods":
     import random
-    movie_choice_list = ['lotr', 'star wars', 'avatar']  
+    movie_choice_list = ['pizza', 'corn', 'pasta']  
     computer_movie_choice = random.choice(movie_choice_list)
     print(computer_movie_choice)
 
