@@ -10,7 +10,7 @@ something from a category with a limited amount of guesses.
 
 #----------------------------------------------------------------------
 def choose_word():
-  category = input("\033[0;37;40mChoose a category from the following: Movies, Sports, Foods: ")
+  category = input("Choose a category from the following: Movies, Sports, Foods: ")
   while category != "movies" and category != "sports" and category != "foods" and category != "Movies" and category != "Sports" and category != "Foods":
     print("Not an input.")
     category = input("\nWhat would you like to do?: ")
@@ -49,10 +49,10 @@ def player_guess(game_word):
         fails = fails + 1
     
     if fails == 0:
-      print("\n\n\033[1;32;40mCONGRATULATIONS, YOU WIN!")
+      print("\n\nCONGRATULATIONS, YOU WIN!")
       break
       
-    guess = input(" \033[0;37;40mChoose a letter: ")
+    guess = input(" Choose a letter: ")
     guesses += guess 
     if guess not in game_word:
       wrong_guess += guess
@@ -64,7 +64,7 @@ def player_guess(game_word):
         print((letter), end=", ")
       print()
       if turn == 0:
-        print("\n\033[1;31;40mYOU LOSE")
+        print("\nYOU LOSE")
         break
 
 #------------------------------------------------------------------------------------
@@ -83,119 +83,106 @@ def menu():
   replit.clear()
   return game_type
 #--------------------------------------------------------------------------------------
-def player_1(player_1_turn):
-  print("\033[0;37;40mWelcome to multiplayer!")
-    print("\n\033[0;37;40mIn this mode, 2 players will go head to head in a 1v1 hang man battle.\n Player" + str(i) + "will go.")
+def player(allturn):
+  print("Welcome to multiplayer!")
+  print("\nIn this mode, 2 players will go head to head in a 1v1 hang man battle.\n Player 1 will go first.")
     
-    category = input("\n[0;37;40mChoose a category from the following: Movies, Sports, Foods: ")
+  category = input("\nChoose a category from the following: Movies, Sports, Foods: ")
       
-    if category == "Movies" or category == "movies":
-      movie_choice = [ 'rocky', 'joker', 'avatar', 'psycho', 'alien', 'scarface', 'inception', 'parasite', 'whiplash', 'gladiator', 'avengers', 'batman', 'hamlet', 'jaws', 'aladdin', 'matrix', 'venom', 'baywatch', 'cars', 'terminator', 'titanic', 'godfather']  
-      game_word = random.choice(movie_choice)
-    elif category == "Sports" or category == "sports":
-      sports_choice = ['basketball', 'football', 'baseball', 'hockey', 'soccer', 'cricket', 'tennis', 'volleyball', 'rugby', 'golf', 'swimming', 'bowling', 'boxing', 'archery', 'curling']  
-      game_word = random.choice(sports_choice)
-    elif category == "Foods" or category == "foods":
-      foods_choice = ['pizza', 'corn', 'pasta', 'potato', 'rice', 'avocado', 'pancake', 'bread', 'broccoli', 'cheese', 'burrito', 'cereal', 'carrot', 'onion', 'apple', 'banana', 'sandwich', 'steak', 'burger', 'oatmeal', 'strawberry']
-      game_word = random.choice(foods_choice)
-  for i in range(2):  
-    
-    print("_" * len(game_word))
-    player_1_turn = 10
-    guesses = ""
-    wrong_guess = ""
-    while player_1_turn > 0: 
-      
-      fails = 0
-      for char in game_word:
-        
-        if char in guesses:
-          print(char, end="")
-          
-        else: 
-          print("_", end="") 
-          fails = fails + 1
-      
-      if fails == 0:
-        print("\n\n\033[1;32;40mCONGRATULATIONS, You finished!")
-        break
-        
-      guess = input("\033[0;37;40m Choose a letter: ")
-      guesses += guess 
-      if guess not in game_word:
-        wrong_guess += guess
-        player_1_turn = player_1_turn - 1
-        print("\033[0;37;40mWrong")
-        print("Turns left: " + str(player_1_turn))
-        print("Letters guessed: ", end="")
-        for letter in wrong_guess:
-          print((letter), end=", ")
-        print()
-        if player_1_turn == 0:
-          print("\n\033[0;37;40mYou ran out of turns.")
-          break
-    print("Player 1 Used " + str(10 - player_1_turn) + " Turns")
-    return player_1_turn
-#------------------------------------------------------------------------------------
-def player_2(player_2_turn):
-  print("\033[1;37;40mNow its player 2 turn.")
-
-  
-  category = input("\n\033[0;37;40mChoose a category from the following: Movies, Sports, Foods: ")
-    
   if category == "Movies" or category == "movies":
-    movie_choice = [ 'rocky', 'joker', 'avatar', 'psycho', 'alien', 'scarface', 'inception', 'parasite', 'whiplash', 'gladiator', 'avengers', 'batman', 'hamlet', 'jaws', 'aladdin', 'matrix', 'venom', 'baywatch', 'cars', 'terminator', 'titanic', 'godfather']  
+    movie_choice = [ 'rocky', 'joker', 'avatar', 'psycho', 'alien', 'scarface','inception', 'parasite', 'whiplash', 'gladiator', 'avengers', 'batman', 'hamlet', 'jaws', 'aladdin', 'matrix', 'venom', 'baywatch', 'cars', 'terminator', 'titanic', 'godfather']  
     game_word = random.choice(movie_choice)
   elif category == "Sports" or category == "sports":
-    sports_choice = ['basketball', 'football', 'baseball', 'hockey', 'soccer', 'cricket', 'tennis', 'volleyball', 'rugby', 'golf', 'swimming', 'bowling', 'boxing', 'archery', 'curling']  
-    game_word = random.choice(sports_choice)
+   sports_choice = ['basketball', 'football', 'baseball', 'hockey', 'soccer', 'cricket', 'tennis', 'volleyball', 'rugby', 'golf', 'swimming', 'bowling', 'boxing', 'archery', 'curling']  
+   game_word = random.choice(sports_choice)
   elif category == "Foods" or category == "foods":
-    foods_choice = ['pizza', 'corn', 'pasta', 'potato', 'rice', 'avocado', 'pancake', 'bread', 'broccoli', 'cheese', 'burrito', 'cereal', 'carrot', 'onion', 'apple', 'banana', 'sandwich', 'steak', 'burger', 'oatmeal', 'strawberry']  
+    foods_choice = ['pizza', 'corn', 'pasta', 'potato', 'rice', 'avocado', 'pancake', 'bread', 'broccoli', 'cheese', 'burrito', 'cereal', 'carrot', 'onion', 'apple', 'banana', 'sandwich', 'steak', 'burger', 'oatmeal', 'strawberry']
     game_word = random.choice(foods_choice)
- 
-  print("_" * len(game_word))
-  player_2_turn = 10
-  guesses = ""
-  wrong_guess = ""
-  while player_2_turn > 0: 
-    
-    fails = 0
-    for char in game_word:
+  player_1 = True
+  while True:  
+    if player_1:
+      player_1_turn = 10
+      guesses = ""
+      wrong_guess = ""
+      while player_1_turn > 0: 
+        
+        fails = 0
+        for char in game_word:
+          
+          if char in guesses:
+            print(char, end="")
+            
+          else: 
+            print("_", end="") 
+            fails = fails + 1
+        
+        if fails == 0:
+          print("\n\nCONGRATULATIONS, You finished!")
+          break
+          
+        guess = input(" Choose a letter: ")
+        guesses += guess 
+        if guess not in game_word:
+          wrong_guess += guess
+          player_1_turn = player_1_turn - 1
+          print("Wrong")
+          print("Turns left: " + str(player_1_turn))
+          print("Letters guessed: ", end="")
+          for letter in wrong_guess:
+            print((letter), end=", ")
+          print()
+          if player_1_turn == 0:
+            print("\nYou ran out of turns.")
+            break
+      print("Player 1 Used " + str(10 - player_1_turn) + " Turns")
+      replit.clear()
+      player_1 = False
+    else: 
+      player_2_turn = 10
+      guesses = ""
+      wrong_guess = ""
+      while player_2_turn > 0: 
+        
+        fails = 0
+        for char in game_word:
+          
+          if char in guesses:
+            print(char, end="")
+            
+          else: 
+            print("_", end="") 
+            fails = fails + 1
+        
+        if fails == 0:
+          print("\n\nCONGRATULATIONS, You finished!")
+          break
+          
+        guess = input(" Choose a letter: ")
+        guesses += guess 
+        if guess not in game_word:
+          wrong_guess += guess
+          player_2_turn = player_2_turn - 1
+          print("Wrong")
+          print("Turns left: " + str(player_2_turn))
+          print("Letters guessed: ", end="")
+          for letter in wrong_guess:
+            print((letter), end=", ")
+          print()
+          if player_2_turn == 0:
+            print("\nYou ran out of turns.")
+            break
+      print("Player 1 Used " + str(10 - player_2_turn) + " Turns")
       
-      if char in guesses:
-         print(char, end="")
-         
-      else: 
-        print("_", end="") 
-        fails = fails + 1
-    
-    if fails == 0:
-      print("\n\n\033[1;32;40mCONGRATULATIONS, You finished!")
-      break
-      
-    guess = input("\033[0;37;40m Choose a letter: ")
-    guesses += guess 
-    if guess not in game_word:
-      wrong_guess += guess
-      player_2_turn = player_2_turn - 1
-      print("\033[0;37;40mWrong")
-      print("Turns left: " + str(player_2_turn))
-      print("Letters guessed: ", end="")
-      for letter in wrong_guess:
-        print((letter), end=", ")
-      print()
-      if player_2_turn == 0:
-        print("\n\033[1;31;40mYou ran out of turns.")
-        break
-  print("\033[0;37;40mPlayer 2 Used " + str(10 - player_2_turn) + " Turns")
-  return player_2_turn
+    break
+  allturns = [player_1_turn, player_2_turn]
+  return allturns
+#------------------------------------------------------------------------------------
 
 
-#--------------------------------------------------------------------------------------
 
+allturn = None
 game_type = menu()
-player_1_turn = ""
-player_2_turn = ""
+
 
 while game_type != 1 and game_type != 2 and game_type != 3:
   print("Not an input.")
@@ -209,15 +196,18 @@ if game_type == 1:
   player_guess(game_word)
 
 elif game_type == 2: 
-  player_1_turn = player_1(player_1_turn)
-  player_2_turn = player_2(player_2_turn)
+  player(allturn)
+  allturn = player(allturn)
+  player_1_turn = allturn[0]
+  player_2_turn = allturn[1]
+
+  
 
   if player_1_turn > player_2_turn:
-    print("Player 1 wins!")
+    print("\033[1;32;40mPlayer 1 wins!")
 
   elif player_2_turn > player_1_turn:
-    print("Player 2 wins!")
+    print("\033[1;32;40mPlayer 2 wins!")
 
   elif player_1_turn == player_2_turn :
-    print("Its a tie!")
-
+    print("\033[1;32;40mIts a tie!")
