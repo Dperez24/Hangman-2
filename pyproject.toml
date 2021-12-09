@@ -7,6 +7,8 @@ authors = ["Dperez24 <<>>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 db = "^0.1.1"
+art = "^5.3"
+replit = "^3.2.4"
 
 [tool.poetry.dev-dependencies]
 
