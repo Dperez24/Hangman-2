@@ -203,7 +203,7 @@ def player():
         #Asks the user for a letter input.
         guess = input(" Choose a letter: ")
 
-        while len(guess) != 1:.)
+        while len(guess) != 1:)
           print("Only input one letter")
           guess = input(" Choose a letter: ")
            
