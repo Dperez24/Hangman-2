@@ -25,7 +25,7 @@ def choose_word():
   
   #Randomly picks an option if the input was "movies".
   if category == "Movies" or category == "movies":
-    movie_choice = [ 'rocky', 'joker', 'avatar', 'psycho', 'alien', 'scarface', 'inception', 'parasite', 'whiplash', 'gladiator', 'avengers', 'batman', 'hamlet', 'jaws', 'aladdin', 'matrix', 'venom', 'baywatch', 'cars', 'terminator', 'titanic', 'godfather','spider-man','']  
+    movie_choice = [ 'rocky', 'joker', 'avatar', 'psycho', 'alien', 'scarface', 'inception', 'parasite', 'whiplash', 'gladiator', 'avengers', 'batman', 'hamlet', 'jaws', 'aladdin', 'matrix', 'venom', 'baywatch', 'cars', 'terminator', 'titanic', 'godfather']  
     game_word = random.choice(movie_choice)
     print(str(len(game_word)) + " letters in the word")
 
@@ -54,12 +54,18 @@ letter is in the word or not. It also asks the user at the end if they would wan
 def player_guess(game_word):
   
   #Asks the user how many turns they want.
-
-  turn = int(input("\nHow many turns would you like? (Pick a number 1-20): "))
-  ListNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-  while turn not in ListNumbers:
-    print('Please put a number. ')
-    turn = int(input("\nHow many turns would you like? (Pick a number 1-20): "))
+  
+  
+ 
+  while True:
+    try: 
+      turn = int(input("\nHow many turns would you like?: "))
+      break
+    
+    except:
+      print("Not an input please put a number.")
+  
+  
 
   # Asks the user to guess letter, documents weather it is right or wrong.
   # If wrong, takes away one turn. If right, aplies letter to the lines
@@ -203,7 +209,7 @@ def player():
         #Asks the user for a letter input.
         guess = input(" Choose a letter: ")
 
-        while len(guess) != 1:)
+        while len(guess) != 1:
           print("Only input one letter")
           guess = input(" Choose a letter: ")
            
@@ -284,6 +290,10 @@ def player():
   #Asks the user if they would like to play again.
   
   multi_again = input("\n\033[0;37;40mWould you like to play again?: ")
+
+  while multi_again != "yes" and "Yes" and "No" and "no":
+    print("Only put yes or no.")
+    multi_again = input("\n\033[0;37;40mWould you like to play again?: ")
   
   if multi_again == "Yes" or multi_again == "yes":
     replit.clear()
