@@ -1,3 +1,4 @@
+
 import random
 import replit
 from art import tprint
@@ -16,7 +17,7 @@ on their input, and tells the user how many letters are in the word.
 
 def choose_word():
   #Asks the user for a category.
-  category = input("Choose a category from the following: Movies, Sports, Foods: ")
+  category = input("\nChoose a category from the following: Movies, Sports, Foods: ")
   
   #If input isn't movies, sports, or foods.
   while category != "movies" and category != "Movies"  and category!= "Sports" and category != "sports" and category != "Foods" and category != "foods":
@@ -147,7 +148,7 @@ def menu():
   tprint("HANGMAN", "Boxing")
   print("Welcome to Hangman! \n" )
   print("_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._")
-  print("\n\nMenu-Options: \n\n [1]Single Player  [2]Multiplayer  ")
+  print("\n\nMenu-Options: \n\n [1]Single Player  [2]Multiplayer  [3]Versus AI  ")
   try:
     game_type = int(input("\nWhat would you like to do?: "))
   except:
@@ -316,6 +317,126 @@ def player():
   #If the user doesn't want to play again.
   elif multi_again == "No" or multi_again == "no":
     print("\nNo problem, thanks for playing!")
+#------------------------------------------------------------------------------
+
+"""
+This is the code for the third game mode, user vs AI. The user must defeat an AI by selecting a difficulty and guessing a word in less turns than the AI.
+"""
+
+def AIplayer():
+  print ("\nDuring this mode you will select a level of difficulty. Depending on the difficulty, you will have a certain random number of turns to guess the word, while an AI guesses with you. The main objective is to defeat the AI. If you use less turns or if you tie with the AI, you win. But if you use more turns than the AI, you lose. Good luck!\n")
+
+  game_word = choose_word()  
+
+  print("\n\nWhich difficulty would you like:\n1) Easy(7-10 fails) \n2) Medium(6-4 fails) \n3) Hard(3-1 fails) \n4) Impossible(0 fails)")
+
+  easy = [0, 1, 2, 3]
+  medium = [4, 5, 6]
+  hard = [7, 8, 9]
+
+ 
+  
+  while True:
+    try:
+      diff = int(input("\n\nSelect a difficulty: "))
+      break
+    except:
+      print("Not an option.\n")
+
+  while diff != 1 and diff != 2 and diff != 3 and diff != 4:
+    print("not an option")
+    diff = int(input("\n\nSelect a difficulty: "))
+  
+  if diff == 1:
+    AIturn = random.choice(easy)
+  elif diff == 2:
+    AIturn = random.choice(medium)
+  elif diff == 3:
+    AIturn = random.choice(hard)
+  elif diff == 4:
+    AIturn = 0
+
+  turn = 10
+
+  print("\nThe AI had " + str(AIturn) + " turns left after guessing the word\n\n")
+  guesses = ""
+  wrong_guess = ""
+  while turn > 0: 
+    
+    fails = 0
+    
+    for char in game_word:
+
+      if char in guesses:
+         print(char, end="")
+         
+      else: 
+        print("_", end="") 
+        fails = fails + 1
+    
+    if fails == 0:
+      break
+      
+    guess = input("\n Choose a Letter: ")
+
+    while len(guess) != 1:
+          print("only input one letter")
+          guess = input(" Choose a letter: ")
+  
+ # Determines whether a guess was made correctly or incorrectly and deducts turns      
+    guesses += guess 
+    if guess not in game_word:
+      wrong_guess += guess
+      turn = turn - 1
+      print("\nWrong")
+      print("\nTurns left: " + str(turn))
+      print("\nLetters guessed: ", end="")
+      for letter in wrong_guess:
+        print((letter), end=", ")
+      print()
+      if turn == 0:
+        break
+  if turn > AIturn:
+    print("\n\033[1;32;40mYou win!")
+
+  elif AIturn > turn:
+    print("\n\033[1;31;40mAI wins!")
+
+  elif AIturn == turn :
+    print("\033[1;32;40mIts a tie!")
+
+  
+  
+  AI_again = input("\n\033[0;37;40mWould you like to play again?: ")
+
+  while AI_again != "yes" and "Yes" and "No" and "no":
+    print("Only put yes or no.")
+    AI_again = input("\n\033[0;37;40mWould you like to play again?: ")
+  
+  if AI_again == "Yes" or AI_again == "yes":
+    replit.clear()
+    game_type = menu()
+    while game_type != 1 and game_type != 2 and game_type != 3:
+      print("Not an input.")
+    try:
+      game_type = int(input("\nWhat would you like to do?: "))
+    except:
+      print("\nIncorrect; Please select the game type.")
+
+    if game_type == 1:
+  
+      game_word = choose_word()
+      player_guess(game_word)
+
+    elif game_type == 2: 
+      player()
+      
+    elif game_type == 3:
+      AIplayer()
+  
+  #If the user doesn't want to play again.
+  elif AI_again == "No" or AI_again == "no":
+    print("\nNo problem, thanks for playing!")
 
 
       
@@ -339,3 +460,8 @@ if game_type == 1:
 
 elif game_type == 2: 
   player()
+
+elif game_type == 3:
+  AIplayer()
+
+  #
